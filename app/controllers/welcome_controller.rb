@@ -3,6 +3,7 @@ class WelcomeController < ApplicationController
   def index
     @event_search_form = EventSearchForm.new(event_search_form_params)
     @events = @event_search_form.search
+    binding.pry
   end
 
   private

@@ -17,7 +17,6 @@ class Event < ApplicationRecord
   attr_accessor :remove_image
 
   before_save :remove_image_if_user_accept
-
   def created_by?(user)
     return false unless user
     owner_id == user.id
