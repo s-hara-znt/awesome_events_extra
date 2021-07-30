@@ -7,7 +7,6 @@ RSpec.describe Event, type: :model do
       let!(:event) { FactoryBot.create(:event, owner_id: user.id) }
       it "trueを返すこと" do
         # user = double(id: event.owner_id)
-        binding.pry
         # allow(event).to receive(:created_by?).and_return(true)
         # expect(event).to receive(:created_by?)
         expect(event.created_by?(user)).to eq true
@@ -34,7 +33,8 @@ RSpec.describe Event, type: :model do
         end_at = start_at + rand(1..30).hours
         event = FactoryBot.build(:event, start_at: start_at, end_at: end_at)
         event.valid?
-        expect(event.errors[:start_at]).to eq false
+        binding.pry
+        expect(event.errors[:start_at]).to be_empty
       end
     end
     context "開始時間が終了時間よりも後の場合" do
